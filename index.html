@@ -1,14 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is a new repo</title>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUN! — Kong City Chase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <p>This is a new reppo</p>
-    <p>this para is in feature1 branch.</p>
-    <p>this is a change in main after making feature1</p>
+
+  <!-- ── START SCREEN ── -->
+  <div id="startScreen" class="overlay">
+    <div class="overlay-card">
+      <div class="godzilla-icon">🦍</div>
+      <h1 class="game-title">RUN!</h1>
+      <p class="sub-title">Kong City Chase</p>
+      <div class="controls-grid">
+        <div class="ctrl-item">
+          <span class="key">↑ / Space</span>
+          <span class="ctrl-desc">Jump</span>
+        </div>
+        <div class="ctrl-item">
+          <span class="key">↓ / S</span>
+          <span class="ctrl-desc">Duck</span>
+        </div>
+        <div class="ctrl-item">
+          <span class="key">← / A</span>
+          <span class="ctrl-desc">Lane Left</span>
+        </div>
+        <div class="ctrl-item">
+          <span class="key">→ / D</span>
+          <span class="ctrl-desc">Lane Right</span>
+        </div>
+      </div>
+      <div class="tip-box">
+        ⚡ When Kong <span class="flame-text">LEAPS</span> toward you,<br />
+        watch the <strong>shadow on the road</strong> — <strong>SWITCH LANES</strong> to dodge!
+      </div>
+      <button id="startBtn" class="btn-primary" onclick="startGame()">▶ START GAME</button>
+      <p class="press-hint">or press <strong>Space / Enter</strong></p>
+    </div>
+  </div>
+
+  <!-- ── GAME OVER SCREEN ── -->
+  <div id="gameOverScreen" class="overlay hidden">
+    <div class="overlay-card">
+      <div class="godzilla-icon shake">💀</div>
+      <h1 class="game-title red">GAME OVER</h1>
+      <p class="go-message">Kong crushed you!</p>
+      <div class="score-display">
+        <div class="score-row">
+          <span class="score-label">Score</span>
+          <span id="finalScore" class="score-val">0</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">Best</span>
+          <span id="highScore" class="score-val gold">0</span>
+        </div>
+      </div>
+      <button id="restartBtn" class="btn-primary" onclick="restartGame()">🔄 RESTART</button>
+      <p class="press-hint">or press <strong>Space / Enter</strong></p>
+    </div>
+  </div>
+
+  <!-- ── HUD ── -->
+  <div id="hud" class="hud hidden">
+    <div id="livesDisplay" class="hud-block">
+      <span class="hud-label">LIVES</span>
+      <div id="hearts" class="hearts">❤️❤️❤️</div>
+    </div>
+    <div id="scoreDisplay" class="hud-block center">
+      <span class="hud-label">SCORE</span>
+      <span id="scoreVal" class="hud-val">0</span>
+    </div>
+    <div id="bestDisplay" class="hud-block right">
+      <span class="hud-label">BEST</span>
+      <span id="bestVal" class="hud-val gold">0</span>
+    </div>
+  </div>
+
+  <!-- ── KONG WARNING BANNER ── -->
+  <div id="flameWarning" class="flame-warning kong-warn hidden">⚠️ KONG IS LEAPING — SWITCH LANES! ⚠️</div>
+
+  <!-- ── CANVAS ── -->
+  <canvas id="gameCanvas"></canvas>
+
+  <script src="game.js"></script>
 </body>
+
 </html>
